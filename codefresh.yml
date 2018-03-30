@@ -1,0 +1,43 @@
+version: '1.0'
+steps:
+
+  gradle_build:
+    title: Gradle Build
+    description: gradlew clean build
+    working_directory: ${{main_clone}}
+    image-name: openjdk:8-jdk-alpine
+    commands:
+      - ./gradlew clean build
+    environment:
+      #enable caching of dependencies and gradle versions
+      - GRADLE_USER_HOME=/codefresh/volume/.gradle
+
+  gradle_test:
+      title: Gradle Test
+      description: gradlew test
+      working_directory: ${{main_clone}}
+      image-name: openjdk:8-jdk-alpine
+      commands:
+        - ./gradlew test
+      environment:
+        #enable caching of dependencies and gradle versions
+        - GRADLE_USER_HOME=/codefresh/volume/.gradle
+
+  gradle_docker_prep:
+        title: Gradle Docker Prep
+        description: gradlew dockerLayerPrepare
+        working_directory: ${{main_clone}}
+        image-name: openjdk:8-jdk-alpine
+        commands:
+          - ./gradlew dockerLayerPrepare
+        environment:
+          #enable caching of dependencies and gradle versions
+          - GRADLE_USER_HOME=/codefresh/volume/.gradle
+
+  build_image:
+      type: build
+      title: Docker Build
+      description: Building the docker image...
+      image-name: unclebob418/dockerplugindemo
+      dockerfile: ./build/dockerlayers/Dockerfile
+      tag: ${{CF_BRANCH}}

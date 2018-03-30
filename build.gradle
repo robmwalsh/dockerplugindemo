@@ -1,7 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.0.0.RELEASE'
     id 'com.garyclayburg.dockerprepare' version '1.3.2'
-    id 'com.palantir.docker' version '0.19.2'
+    //id 'com.palantir.docker' version '0.19.2'
     id 'java'
     id 'eclipse'
     id 'io.spring.dependency-management' version '1.0.4.RELEASE'
@@ -18,12 +18,12 @@ dockerprepare {
     commonService = ['org.springframework.boot:spring-boot-starter-web']
 }
 
-docker {
-    name "${project.group}/${jar.baseName}"
-    files "${dockerprepare.dockerBuildDirectory}"
-    dockerfile file("${dockerprepare.dockerBuildDirectory}/Dockerfile")
-    dependsOn build
-}
+//docker {
+//    name "${project.group}/${jar.baseName}"
+//    files "${dockerprepare.dockerBuildDirectory}"
+//    dockerfile file("${dockerprepare.dockerBuildDirectory}/Dockerfile")
+//    dependsOn build
+//}
 
 repositories {
     mavenCentral()

@@ -13,31 +13,31 @@ steps:
       - GRADLE_USER_HOME=/codefresh/volume/.gradle
 
   gradle_test:
-      title: Gradle Test
-      description: gradlew test
-      working_directory: ${{main_clone}}
-      image: openjdk:8-jdk-alpine
-      commands:
-        - ./gradlew test
-      environment:
-        #enable caching of dependencies and gradle versions
-        - GRADLE_USER_HOME=/codefresh/volume/.gradle
+    title: Gradle Test
+    description: gradlew test
+    working_directory: ${{main_clone}}
+    image: openjdk:8-jdk-alpine
+    commands:
+      - ./gradlew test
+    environment:
+      #enable caching of dependencies and gradle versions
+      - GRADLE_USER_HOME=/codefresh/volume/.gradle
 
   gradle_docker_prep:
-        title: Gradle Docker Prep
-        description: gradlew dockerLayerPrepare
-        working_directory: ${{main_clone}}
-        image: openjdk:8-jdk-alpine
-        commands:
-          - ./gradlew dockerLayerPrepare
-        environment:
-          #enable caching of dependencies and gradle versions
-          - GRADLE_USER_HOME=/codefresh/volume/.gradle
+    title: Gradle Docker Prep
+    description: gradlew dockerLayerPrepare
+    working_directory: ${{main_clone}}
+    image: openjdk:8-jdk-alpine
+    commands:
+      - ./gradlew dockerLayerPrepare
+    environment:
+      #enable caching of dependencies and gradle versions
+      - GRADLE_USER_HOME=/codefresh/volume/.gradle
 
   build_image:
-      type: build
-      title: Docker Build
-      description: Building the docker image...
-      image_name: {my-repository}/dockerplugindemo
-      dockerfile: build/dockerlayers/Dockerfile
-      tag: ${{CF_BRANCH}}
+    type: build
+    title: Docker Build
+    description: Building the docker image...
+    image_name: {my-repository}/dockerplugindemo
+    dockerfile: build/dockerlayers/Dockerfile
+    tag: ${{CF_BRANCH}}

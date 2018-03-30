@@ -5,7 +5,7 @@ steps:
     title: Gradle Build
     description: gradlew clean build
     working_directory: ${{main_clone}}
-    image-name: openjdk:8-jdk-alpine
+    image: openjdk:8-jdk-alpine
     commands:
       - ./gradlew clean build
     environment:

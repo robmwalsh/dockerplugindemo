@@ -11,6 +11,7 @@ public class DockerpluginApplicationTests {
 
 	@Test
 	public void contextLoads() {
-	}
+
+    }
 
 }

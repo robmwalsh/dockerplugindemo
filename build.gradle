@@ -10,10 +10,10 @@ plugins {
 
 group = 'com.unclebobsdevblog'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 9
+sourceCompatibility = 8
 
 dockerprepare {
-    dockerfileSet '90111-jre-sid-buildlabels'
+//    dockerfileSet '90111-jre-sid-buildlabels'
     dockerBuildDirectory "${project.buildDir}/dockerlayers"
     commonService = ['org.springframework.boot:spring-boot-starter-web']
 }

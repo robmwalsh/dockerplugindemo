@@ -5,7 +5,7 @@ steps:
     title: Gradle Build
     description: gradlew clean build
     working_directory: ${{main_clone}}
-    image: openjdk:9.0.1-11-jre-sid
+    image: openjdk:8-jdk-alpine
     commands:
       - ./gradlew clean build
     environment:
@@ -16,7 +16,7 @@ steps:
     title: Gradle Test
     description: gradlew test
     working_directory: ${{main_clone}}
-    image: openjdk:9.0.1-11-jre-sid
+    image: openjdk:8-jdk-alpine
     commands:
       - ./gradlew test
     environment:
@@ -27,7 +27,7 @@ steps:
     title: Gradle Docker Prep
     description: gradlew dockerLayerPrepare
     working_directory: ${{main_clone}}
-    image: openjdk:9.0.1-11-jre-sid
+    image: openjdk:8-jdk-alpine
     commands:
       - ./gradlew dockerLayerPrepare
     environment:

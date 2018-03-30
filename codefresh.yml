@@ -16,7 +16,7 @@ steps:
       title: Gradle Test
       description: gradlew test
       working_directory: ${{main_clone}}
-      image-name: openjdk:8-jdk-alpine
+      image: openjdk:8-jdk-alpine
       commands:
         - ./gradlew test
       environment:
@@ -27,7 +27,7 @@ steps:
         title: Gradle Docker Prep
         description: gradlew dockerLayerPrepare
         working_directory: ${{main_clone}}
-        image-name: openjdk:8-jdk-alpine
+        image: openjdk:8-jdk-alpine
         commands:
           - ./gradlew dockerLayerPrepare
         environment:
@@ -38,6 +38,6 @@ steps:
       type: build
       title: Docker Build
       description: Building the docker image...
-      image-name: unclebob418/dockerplugindemo
+      image_name: {my-repository}/dockerplugindemo
       dockerfile: ./build/dockerlayers/Dockerfile
       tag: ${{CF_BRANCH}}

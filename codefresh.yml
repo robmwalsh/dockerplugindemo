@@ -39,5 +39,5 @@ steps:
       title: Docker Build
       description: Building the docker image...
       image_name: {my-repository}/dockerplugindemo
-      dockerfile: ./build/dockerlayers/Dockerfile
+      dockerfile: build/dockerlayers/Dockerfile
       tag: ${{CF_BRANCH}}
